@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+//最小值买入，最高位卖出
+
+int maxProfit(int* prices, int pricesSize) 
+{
+	int buy[100] = { 0 };
+	int sell[100] = { 0 };
+	int i = 1, j = 0, k = 0;
+	int prof = 0;
+	if (prices[0] < prices[1])
+		buy[j++] = prices[0];
+	if (prices[pricesSize - 1] > prices[pricesSize - 2])
+		sell[k++] = prices[pricesSize - 1];
+	for (i;i < pricesSize-1;i++)
+	{
+		if (prices[i] < prices[i + 1]&&prices[i]<prices[i-1])
+			buy[j++] = prices[i];
+		if (prices[i] > prices[i + 1]&&prices[i]>prices[i-1])
+			sell[k++] = prices[i];
+	}
+	for (i = 0;i < pricesSize - 1;i++)
+		prof += (sell[i] - buy[i]);
+	return prof;
+}
