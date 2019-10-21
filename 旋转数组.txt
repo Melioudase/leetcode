@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+void rotate(int* nums, int numsSize, int k)
+{
+	int i = 0,j=0,c=0;
+	int x = nums[i];
+	int temp=nums[i];
+	int t;
+	for (c=0;c<numsSize;c++)
+	{
+		for (c = 0;c < numsSize;c++)
+		{
+			i = (i + k) % numsSize;
+			t = nums[i];
+			nums[i] = x;
+			x = t;
+			if (i != j)
+			{
+				nums[i] = temp;
+				temp = t;
+			}
+			if (i == j)
+			{
+				i = ++j;
+				x = nums[i];
+				temp = nums[i];
+			}
+		}
+	}
+
+}
+
+
+
+
